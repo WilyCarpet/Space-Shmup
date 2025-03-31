@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +27,9 @@ public class Enemy_4 : Enemy
         p0 = p1;
         float widMinRad = bndCheck.camWidth - bndCheck.radius;
         float hgtMinRad = bndCheck.camHeight - bndCheck.radius;
-        p1.x = UnityEngine.Random.Range(-widMinRad, widMinRad);
-        p1.y = UnityEngine.Random.Range(-hgtMinRad, hgtMinRad);
+        Debug.Log(p0);
+        p1.x = Random.Range(-widMinRad, widMinRad);
+        p1.y = Random.Range(-hgtMinRad, hgtMinRad);
 
         if(p0.x * p1.x > 0 && p0.y * p1.y > 0) {
             if(Mathf.Abs(p0.x) > Mathf.Abs(p0.y)){
@@ -43,6 +44,7 @@ public class Enemy_4 : Enemy
 
     public override void Move()
     {
+        Debug.Log("4 move");
         float u = (Time.time - timeStart) / duration;
 
         if(u >= 1){
@@ -52,7 +54,6 @@ public class Enemy_4 : Enemy
 
         u = u - 0.15f * Mathf.Sin(u * 2 *Mathf.PI);
         pos = (1-u)*p0 + u*p1;
-        base.Move();
     }
 
     void OnCollisionEnter(Collision coll)
@@ -93,11 +94,5 @@ public class Enemy_4 : Enemy
         } else {
             Debug.Log("Enemy_4 hit by non-projectileHero: " + otherGO.name);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
