@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Burst.Intrinsics;
-using UnityEditor.EditorTools;
-using UnityEditor.Rendering;
+
 using UnityEngine;
 
 [RequireComponent(typeof(BoundsCheck))]
